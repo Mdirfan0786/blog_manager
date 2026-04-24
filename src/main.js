@@ -9,6 +9,19 @@ const form = document.getElementById("blog-form");
 const titleInput = document.getElementById("title");
 const bodyInput = document.getElementById("body");
 const blogList = document.getElementById("blog-list");
+const tagsInput = document.getElementById("tags");
+const filterInput = document.getElementById("filter-tag");
+
+// filter post by tagname
+filterInput.addEventListener("input", () => {
+  const value = filterInput.value.toLowerCase();
+
+  const filteredBlogs = getBlogs().filter((blog) =>
+    blog.tags?.some((tag) => tag.toLowerCase().includes(value)),
+  );
+
+  renderBlogList(blogList, filteredBlogs);
+});
 
 // editing state
 let editingId = null;
@@ -19,6 +32,10 @@ form.addEventListener("submit", (e) => {
 
   const title = titleInput.value.trim();
   const body = bodyInput.value.trim();
+  const tags = tagsInput.value
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
 
   if (!title || !body) return;
 
@@ -33,6 +50,7 @@ form.addEventListener("submit", (e) => {
       title,
       body,
       date: oldDate,
+      tags,
     });
     editingId = null;
   } else {
@@ -41,6 +59,7 @@ form.addEventListener("submit", (e) => {
       title,
       body,
       date: getFormattedDate(),
+      tags,
     };
     addBlog(newBlog);
   }
@@ -64,6 +83,7 @@ bindEditEvents(blogList, (id) => {
 
   titleInput.value = blogToEdit.title;
   bodyInput.value = blogToEdit.body;
+  tagsInput.value = blogToEdit.tags?.join(", ") || "";
 
   editingId = id;
 });

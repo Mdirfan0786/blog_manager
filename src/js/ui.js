@@ -1,17 +1,21 @@
-// src/js/ui.js
 import { getBlogs, deleteBlog } from "./data.js";
 
-export function renderBlogList(container) {
+export function renderBlogList(container, blogsData = getBlogs()) {
   container.innerHTML = "";
 
-  getBlogs().forEach((blog) => {
+  blogsData.forEach((blog) => {
     const li = document.createElement("li");
 
     li.innerHTML = `
       <div class="list_content">
         <h3>${blog.title}</h3>
+
         <div class="blog-body">
           ${marked.parse(blog.body)} 
+        </div>
+
+        <div class="tags">
+            ${blog.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
         </div>
       </div>
       

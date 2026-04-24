@@ -25,6 +25,10 @@ body {
 
 /* ---------- Header ---------- */
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   padding: 1rem 0;
   width: 100%;
   max-width: 500px;
@@ -32,6 +36,13 @@ header {
   border-bottom: 3px solid var(--primary);
 }
 
+#filter-tag {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  font-size: 0.85rem;
+  width: 150px;
+}
 /* ---------- Main ---------- */
 main {
   flex: 1;
@@ -48,7 +59,7 @@ main {
 }
 
 /* ---------- Form ---------- */
-form {
+#blog-form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -161,6 +172,21 @@ button:hover {
 /* Content */
 .list_content {
   flex: 1;
+}
+
+.tags {
+  margin: 0.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  background: var(--primary);
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  border-radius: 4px;
 }
 
 /* Markdown content */
