@@ -10,7 +10,9 @@ export function renderBlogList(container) {
     li.innerHTML = `
       <div class="list_content">
         <h3>${blog.title}</h3>
-        <p>${blog.body}</p>
+        <div class="blog-body">
+          ${marked.parse(blog.body)} 
+        </div>
       </div>
       
       <div class="post_btns">
