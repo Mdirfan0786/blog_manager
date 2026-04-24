@@ -31,3 +31,12 @@ export function bindDeleteEvents(container, onDelete) {
     }
   });
 }
+
+export function bindEditEvents(container, onEdit) {
+  container.addEventListener("click", (e) => {
+    if (e.target.classList.contains("edit_btn")) {
+      const id = parseInt(e.target.dataset.id);
+      onEdit(id);
+    }
+  });
+}
