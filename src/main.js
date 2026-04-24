@@ -3,6 +3,7 @@
 import { addBlog, deleteBlog, updateBlog, getBlogs } from "./js/data.js";
 
 import { renderBlogList, bindDeleteEvents, bindEditEvents } from "./js/ui.js";
+import { getFormattedDate } from "./utils/date.js";
 
 const form = document.getElementById("blog-form");
 const titleInput = document.getElementById("title");
@@ -22,10 +23,16 @@ form.addEventListener("submit", (e) => {
   if (!title || !body) return;
 
   if (editingId) {
+    const blogs = getBlogs();
+    const oldBlog = blogs.find((b) => b.id === editingId);
+    const oldDate = oldBlog.date;
+    console.log(oldDate);
+
     updateBlog({
       id: editingId,
       title,
       body,
+      date: oldDate,
     });
     editingId = null;
   } else {
@@ -33,6 +40,7 @@ form.addEventListener("submit", (e) => {
       id: Date.now(),
       title,
       body,
+      date: getFormattedDate(),
     };
     addBlog(newBlog);
   }

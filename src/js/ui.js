@@ -14,8 +14,11 @@ export function renderBlogList(container) {
       </div>
       
       <div class="post_btns">
-        <button class="edit_btn" data-id="${blog.id}">Edit</button>
-        <button class="delete-btn" data-id="${blog.id}">Delete</button>
+        <small>${blog.date}</small>
+        <div>
+            <button class="edit_btn" data-id="${blog.id}">Edit</button>
+            <button class="delete-btn" data-id="${blog.id}">Delete</button>
+        </div>
       </div>
     `;
 
