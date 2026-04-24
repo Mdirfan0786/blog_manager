@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blog-manager</title>
+
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Blog Manager</h1>
+    </header>
+
+    <main>
+      <div class="container">
+        <section>
+          <form id="blog-form">
+            <label for="title"></label>
+            <input type="text" id="title" placeholder="Blog title" required />
+
+            <label for="body"></label>
+            <textarea id="body" placeholder="Blog body..." required></textarea>
+
+            <button type="submit">Add Blog</button>
+          </form>
+        </section>
+
+        <section>
+          <ul id="blog-list"></ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Blog Manager. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
